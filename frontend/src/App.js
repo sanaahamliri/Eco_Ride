@@ -20,7 +20,7 @@ function App() {
             <Route path="/register" element={<Register />} />
             <Route path="/login" element={<Login />} />
             <Route 
-              path="/passager-dashboard" 
+              path="/PassagerPage" 
               element={
                 <ProtectedRoute role="passager">
                   <PassagerDashboard />
@@ -28,7 +28,7 @@ function App() {
               } 
             />
             <Route 
-              path="/conducteur-dashboard" 
+              path="/ConducteurPage" 
               element={
                 <ProtectedRoute role="conducteur">
                   <ConducteurDashboard />
