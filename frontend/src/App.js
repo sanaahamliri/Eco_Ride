@@ -5,6 +5,9 @@ import Navbar from './components/Navbar';
 import Home from './pages/Home';
 import Register from './pages/Register';
 import Login from './pages/Login';
+import PassagerDashboard from './pages/PassagerDashboard';
+import ConducteurDashboard from './pages/ConducteurDashboard';
+import ProtectedRoute from './components/ProtectedRoute';
 
 function App() {
   return (
@@ -16,6 +19,22 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/register" element={<Register />} />
             <Route path="/login" element={<Login />} />
+            <Route 
+              path="/passager-dashboard" 
+              element={
+                <ProtectedRoute role="passager">
+                  <PassagerDashboard />
+                </ProtectedRoute>
+              } 
+            />
+            <Route 
+              path="/conducteur-dashboard" 
+              element={
+                <ProtectedRoute role="conducteur">
+                  <ConducteurDashboard />
+                </ProtectedRoute>
+              } 
+            />
           </Routes>
         </div>
       </Router>
