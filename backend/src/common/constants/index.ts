@@ -1,6 +1,6 @@
 export const ROLES = {
   PASSENGER: 'passenger',
-  DRIVER: 'driver',
+  CONDUCTEUR: 'conducteur',
   ADMIN: 'admin',
 };
 

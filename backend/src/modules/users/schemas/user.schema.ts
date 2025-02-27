@@ -1,5 +1,5 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { Document } from 'mongoose';
+import { Document } from 'monoose';
 import { ROLES } from '../../../common/constants';
 
 @Schema()
