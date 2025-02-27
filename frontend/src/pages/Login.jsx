@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { useAuth } from '../contexts/AuthContext';
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "../contexts/AuthContext";
 
 const Login = () => {
   const [formData, setFormData] = useState({
-    email: '',
-    password: '',
+    email: "",
+    password: "",
   });
   const { login } = useAuth();
   const navigate = useNavigate();
@@ -17,28 +17,35 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const { role } = await login(formData);
-      if (role === 'passager') {
-        navigate('/PassagerPage');
-      } else if (role === 'conducteur') {
-        navigate('/ConducteurPage');
+      const user = await login(formData);
+      if (user.role === "passenger") {
+        navigate("/PassagerPage");
+      } else if (user.role === "conducteur") {
+        navigate("/ConducteurPage");
+      } else {
+        console.error("Unknown user role:", user.role);
       }
     } catch (error) {
-      console.error('Login failed:', error);
+      console.error("Login failed:", error);
     }
   };
 
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
-        <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">Connexion</h2>
+        <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
+          Connexion
+        </h2>
       </div>
 
       <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
         <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
           <form className="space-y-6" onSubmit={handleSubmit}>
             <div>
-              <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+              <label
+                htmlFor="email"
+                className="block text-sm font-medium text-gray-700"
+              >
                 Adresse e-mail
               </label>
               <div className="mt-1">
@@ -56,7 +63,10 @@ const Login = () => {
             </div>
 
             <div>
-              <label htmlFor="password" className="block text-sm font-medium text-gray-700">
+              <label
+                htmlFor="password"
+                className="block text-sm font-medium text-gray-700"
+              >
                 Mot de passe
               </label>
               <div className="mt-1">

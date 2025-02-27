@@ -5,8 +5,8 @@ import Navbar from './components/Navbar';
 import Home from './pages/Home';
 import Register from './pages/Register';
 import Login from './pages/Login';
-import PassagerDashboard from './pages/PassagerDashboard';
-import ConducteurDashboard from './pages/ConducteurDashboard';
+import PassagerDashboard from './pages/PassagerPage';
+import ConducteurDashboard from './pages/ConducteurPage';
 import ProtectedRoute from './components/ProtectedRoute';
 
 function App() {
@@ -22,7 +22,7 @@ function App() {
             <Route 
               path="/PassagerPage" 
               element={
-                <ProtectedRoute role="passager">
+                <ProtectedRoute role="passenger">
                   <PassagerDashboard />
                 </ProtectedRoute>
               } 

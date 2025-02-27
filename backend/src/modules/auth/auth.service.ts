@@ -15,9 +15,14 @@ export class AuthService {
   ) {}
 
   async register(registerDto: RegisterDto): Promise<User> {
-    const { name, email, password } = registerDto;
+    const { name, email, password, role } = registerDto;
     const hashedPassword = await bcrypt.hash(password, 10);
-    const user = new this.userModel({ name, email, password: hashedPassword });
+    const user = new this.userModel({
+      name,
+      email,
+      password: hashedPassword,
+      role,
+    });
     return user.save();
   }
 
@@ -31,8 +36,13 @@ export class AuthService {
 
   async login(user: User) {
     const payload = { email: user.email, sub: user._id, role: user.role };
+
+    const token = this.jwtService.sign(payload);
+
+    console.log(token);
     return {
-      access_token: this.jwtService.sign(payload),
+      token: token,
+      user,
     };
   }
 }

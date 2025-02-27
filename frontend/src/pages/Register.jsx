@@ -1,14 +1,13 @@
-// src/pages/Register.js
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { useAuth } from '../contexts/AuthContext';
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "../contexts/AuthContext";
 
 const Register = () => {
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    password: '',
-    role: 'passager',
+    name: "",
+    email: "",
+    password: "",
+    role: "",
   });
   const { register } = useAuth();
   const navigate = useNavigate();
@@ -21,23 +20,28 @@ const Register = () => {
     e.preventDefault();
     try {
       await register(formData);
-      navigate('/login');
+      navigate("/login");
     } catch (error) {
-      console.error('Registration failed:', error);
+      console.error("Registration failed:", error);
     }
   };
 
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
-        <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">Créer un compte</h2>
+        <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
+          Créer un compte
+        </h2>
       </div>
 
       <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
         <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
           <form className="space-y-6" onSubmit={handleSubmit}>
-          <div>
-              <label htmlFor="name" className="block text-sm font-medium text-gray-700">
+            <div>
+              <label
+                htmlFor="name"
+                className="block text-sm font-medium text-gray-700"
+              >
                 Nom
               </label>
               <div className="mt-1">
@@ -53,7 +57,10 @@ const Register = () => {
             </div>
 
             <div>
-              <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+              <label
+                htmlFor="email"
+                className="block text-sm font-medium text-gray-700"
+              >
                 Adresse e-mail
               </label>
               <div className="mt-1">
@@ -70,7 +77,10 @@ const Register = () => {
             </div>
 
             <div>
-              <label htmlFor="password" className="block text-sm font-medium text-gray-700">
+              <label
+                htmlFor="password"
+                className="block text-sm font-medium text-gray-700"
+              >
                 Mot de passe
               </label>
               <div className="mt-1">
@@ -87,7 +97,10 @@ const Register = () => {
             </div>
 
             <div>
-              <label htmlFor="confirmPassword" className="block text-sm font-medium text-gray-700">
+              <label
+                htmlFor="confirmPassword"
+                className="block text-sm font-medium text-gray-700"
+              >
                 Confirmer le mot de passe
               </label>
               <div className="mt-1">
@@ -103,9 +116,11 @@ const Register = () => {
               </div>
             </div>
 
-
             <div>
-              <label htmlFor="role" className="block text-sm font-medium text-gray-700">
+              <label
+                htmlFor="role"
+                className="block text-sm font-medium text-gray-700"
+              >
                 Rôle
               </label>
               <select
@@ -115,7 +130,7 @@ const Register = () => {
                 onChange={handleChange}
                 className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md"
               >
-                <option value="passager">Passager</option>
+                <option value="passenger">Passager</option>
                 <option value="conducteur">Conducteur</option>
               </select>
             </div>
